@@ -10,13 +10,11 @@ import { categories } from '../../data/categoriesData';
 import { lightTheme, darkTheme } from '../../config/theme.js';
 
 const Home: React.FC = () => {
-  // Leer preferencia inicial de localStorage o establecer un valor por defecto
   const [darkMode, setDarkMode] = useState(() => {
     const savedMode = localStorage.getItem('darkMode');
     return savedMode ? JSON.parse(savedMode) : false;
   });
 
-  // Actualizar localStorage cuando el modo cambia
   useEffect(() => {
     localStorage.setItem('darkMode', JSON.stringify(darkMode));
   }, [darkMode]);
@@ -25,7 +23,6 @@ const Home: React.FC = () => {
     setDarkMode((prevMode: any) => !prevMode);
   };
 
-  // Crear tema usando el estado actual de darkMode
   const theme = useMemo(() => (darkMode ? darkTheme : lightTheme), [darkMode]);
 
   return (
