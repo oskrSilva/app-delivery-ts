@@ -1,15 +1,25 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, Button } from '@mui/material';
+import { AppBar, Toolbar, Typography, IconButton } from '@mui/material';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 
-const Header: React.FC = () => (
-    <AppBar position="static">
+
+interface HeaderProps {
+  onToggleDarkMode: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onToggleDarkMode }) => (
+  <AppBar position="static">
     <Toolbar>
-      <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-        Multitienda
+      <Typography variant="h6" sx={{ flexGrow: 1 }}>
+        My App
       </Typography>
-      <Button color="inherit" aria-label="Iniciar sesión">Iniciar Sesión</Button>
+      <IconButton color="inherit" onClick={onToggleDarkMode}>
+        {/* Cambia el ícono según el modo */}
+        <DarkModeIcon />
+      </IconButton>
     </Toolbar>
   </AppBar>
 );
 
 export default Header;
+
